@@ -1,4 +1,4 @@
-define(["Parse", "underscore", "jquery"], function (Parse, _, $) {
+define(["Parse", "underscore", "jquery","text!templates/item-template.html"], function (Parse, _, $,itemTemplate) {
     Parse.$ = $;
 
 
@@ -12,7 +12,7 @@ define(["Parse", "underscore", "jquery"], function (Parse, _, $) {
         tagName: "li",
 
         // Cache the template function for a single item.
-        template: _.template($('#item-template').html()),
+        template: _.template(itemTemplate),
 
         // The DOM events specific to an item.
         events: {

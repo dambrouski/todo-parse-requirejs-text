@@ -1,10 +1,10 @@
-define(["Parse", "underscore", "jquery", "models/todo", "collections/todolist", "views/loginview", "views/todoview",  "models/appstate"], function (Parse, _, $,Todo,TodoList,LogInView,TodoView,state) {
+define(["Parse", "underscore", "jquery", "models/todo", "collections/todolist", "views/loginview", "views/todoview",  "models/appstate","text!templates/manage-todos-template.html","text!templates/stats-template.html"], function (Parse, _, $,Todo,TodoList,LogInView,TodoView,state,manageTodosTemplate,statsTemplate) {
     Parse.$ = $;
     // The main view that lets a user manage their todo items
     var ManageTodosView = Parse.View.extend({
 
         // Our template for the line of statistics at the bottom of the app.
-        statsTemplate: _.template($('#stats-template').html()),
+        statsTemplate: _.template(statsTemplate),
 
         // Delegated events for creating new items, and clearing completed ones.
         events: {
@@ -26,7 +26,7 @@ define(["Parse", "underscore", "jquery", "models/todo", "collections/todolist", 
             _.bindAll(this, 'addOne', 'addAll', 'addSome', 'render', 'toggleAllComplete', 'logOut', 'createOnEnter');
 
             // Main todo management template
-            this.$el.html(_.template($("#manage-todos-template").html()));
+            this.$el.html(_.template(manageTodosTemplate));
 
             this.input = this.$("#new-todo");
             this.allCheckbox = this.$("#toggle-all")[0];

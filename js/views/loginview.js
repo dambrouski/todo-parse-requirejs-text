@@ -1,4 +1,4 @@
-define(["Parse", "underscore", "jquery"], function (Parse, _, $) {
+define(["Parse", "underscore", "jquery","text!templates/login-template.html"], function (Parse, _, $, loginTemplate) {
 
     var LogInView = Parse.View.extend({
         events: {
@@ -70,7 +70,7 @@ define(["Parse", "underscore", "jquery"], function (Parse, _, $) {
         },
 
         render: function () {
-            this.$el.html(_.template($("#login-template").html()));
+            this.$el.html(_.template(loginTemplate));
             this.delegateEvents();
         }
     });
