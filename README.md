@@ -1,0 +1,1 @@
+Parse Todo list application "fixed" to use require.js and text extension.
